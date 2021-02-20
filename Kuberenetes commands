@@ -31,21 +31,34 @@ kubectl explain pod --recursive | grep -A5 tolerations - To display
 #To get all kubernetes objects in the default namespace
 kubectl get all
 
+#To expose or create a service to make the application available for end user
 kubectl expose deployment <deploymentname> --name=<servicename> --target-port=8080 
 --type=NodePort --port=8080 --dry-run=client -o yaml > filename.yaml
 
+#To Update Create any object in Kubernetes
 kubectl apply -f filename.yaml
 
+#To display pods in particular labels
 kubectl get pods --selector env=dev
-kubectl get pods --show-labels
 kubectl get pods -l env=dev
+
+#To List the pods with labels
+kubectl get pods --show-labels
+
+#To List the pods output without headers and count the total objects(Pods)
 kubectl get pods -l env=dev --no-headers | wc -l
+
+#To List the pods with Multiple labels
 kubectl get pods -l env=prod,bu=finance,tier=frontend
 
+#Syntax to Taint a node
 kubectl taint nodes node01 key=value:effect
 
+#To remove the taint from a node
 kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule-
 
+#To see the details of the taint
 kubectl describe node kubemaster | grep taint
 
+#To create a pod 
 kubectl run podname --image=nginx --restart=Never
