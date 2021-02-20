@@ -1,0 +1,51 @@
+#To list the pods in the default namespace
+kubectl get pods
+
+#To List the pods with extended output
+kubectl get pods -o wide
+
+#To view the details of a particular pod
+kubectl describe pods <pod name>
+
+#To List the deployments in the default namespace
+kubectl get deployments
+
+#To view the details of a particular deployment
+kubectl describe deployments
+
+#To List the services in the default namespace
+kubectl get services
+
+#To List the replicaset in the default namespace
+kubectl get replicaset
+
+#To List the replicacontroller in the default namespace
+kubectl get replicationcontroller
+
+#To see the various options or arugments that can be passed to the commands
+kubectl explain pod, replicaset, deployments, services
+kubectl explain pod --recursive | less
+kubectl explain pod --recursive | grep -A5 tolerations - To display
+5 lines below tolerations
+
+#To get all kubernetes objects in the default namespace
+kubectl get all
+
+kubectl expose deployment <deploymentname> --name=<servicename> --target-port=8080 
+--type=NodePort --port=8080 --dry-run=client -o yaml > filename.yaml
+
+kubectl apply -f filename.yaml
+
+kubectl get pods --selector env=dev
+kubectl get pods --show-labels
+kubectl get pods -l env=dev
+kubectl get pods -l env=dev --no-headers | wc -l
+kubectl get pods -l env=prod,bu=finance,tier=frontend
+
+kubectl taint nodes node01 key=value:effect
+
+kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule-
+
+kubectl describe node kubemaster | grep taint
+
+kubectl run podname --image=nginx --restart=Never
