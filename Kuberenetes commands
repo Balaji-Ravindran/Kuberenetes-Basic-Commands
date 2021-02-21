@@ -62,3 +62,16 @@ kubectl describe node kubemaster | grep taint
 
 #To create a pod 
 kubectl run podname --image=nginx --restart=Never
+
+#To Label the node
+kubectl label nodes <node-name> <label-key>=<label-value>
+kubectl label nodes node1 size=Large
+kubectl label node node01 color=blue
+
+#To view the Label of the node
+kubectl describe node <node-name> | grep -i labels
+kubectl get nodes node01 --show-labels
+
+#To create and scale deployment - Imperative commands
+kubectl create deployment blue --image=nginx --replicas=6 
+kubectl scale deployment blue --replicas=6
