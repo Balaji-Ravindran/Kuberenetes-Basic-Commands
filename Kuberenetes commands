@@ -75,3 +75,21 @@ kubectl get nodes node01 --show-labels
 #To create and scale deployment - Imperative commands
 kubectl create deployment blue --image=nginx --replicas=6 
 kubectl scale deployment blue --replicas=6
+
+kubectl create namespace default-mem-example
+
+kubectl edit deployment my-deployment
+kubectl edit pod <pod name>
+
+kubectl get pod webapp -o yaml > my-new-pod.yaml
+
+kubectl get daemonsets
+
+kubectl get all --all-namespaces
+
+kubectl get daemonsets --all-namespaces --no-headers | wc -l
+kubectl get ds --all-namespaces
+
+kubectl describe daemonset kube-proxy -n kube-system
+
+kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
