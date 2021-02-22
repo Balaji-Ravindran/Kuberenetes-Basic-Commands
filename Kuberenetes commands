@@ -93,5 +93,3 @@ kubectl get ds --all-namespaces
 kubectl describe daemonset kube-proxy -n kube-system
 
 kubectl run --restart=Never --image=busybox static-busybox --dry-run=client -o yaml --command -- sleep 1000 > /etc/kubernetes/manifests/static-busybox.yaml
-
-use schedulerName: my-scheduler
